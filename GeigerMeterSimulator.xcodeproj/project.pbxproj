@@ -1,0 +1,554 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6EBF6DE1203968F000D4361F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF6DE0203968F000D4361F /* AppDelegate.swift */; };
+		6EBF6DE3203968F000D4361F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF6DE2203968F000D4361F /* ViewController.swift */; };
+		6EBF6DE5203968F000D4361F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EBF6DE4203968F000D4361F /* Assets.xcassets */; };
+		6EBF6DE8203968F000D4361F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EBF6DE6203968F000D4361F /* Main.storyboard */; };
+		6EBF6DF4203968F000D4361F /* GeigerMeterSimulatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF6DF3203968F000D4361F /* GeigerMeterSimulatorTests.swift */; };
+		6EBF6DFF203968F000D4361F /* GeigerMeterSimulatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF6DFE203968F000D4361F /* GeigerMeterSimulatorUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6EBF6DF0203968F000D4361F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6EBF6DD5203968F000D4361F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6EBF6DDC203968F000D4361F;
+			remoteInfo = GeigerMeterSimulator;
+		};
+		6EBF6DFB203968F000D4361F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6EBF6DD5203968F000D4361F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6EBF6DDC203968F000D4361F;
+			remoteInfo = GeigerMeterSimulator;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6EBF6DDD203968F000D4361F /* GeigerMeterSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeigerMeterSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EBF6DE0203968F000D4361F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6EBF6DE2203968F000D4361F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6EBF6DE4203968F000D4361F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6EBF6DE7203968F000D4361F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6EBF6DE9203968F000D4361F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6EBF6DEA203968F000D4361F /* GeigerMeterSimulator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GeigerMeterSimulator.entitlements; sourceTree = "<group>"; };
+		6EBF6DEF203968F000D4361F /* GeigerMeterSimulatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeigerMeterSimulatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EBF6DF3203968F000D4361F /* GeigerMeterSimulatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeigerMeterSimulatorTests.swift; sourceTree = "<group>"; };
+		6EBF6DF5203968F000D4361F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6EBF6DFA203968F000D4361F /* GeigerMeterSimulatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeigerMeterSimulatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6EBF6DFE203968F000D4361F /* GeigerMeterSimulatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeigerMeterSimulatorUITests.swift; sourceTree = "<group>"; };
+		6EBF6E00203968F000D4361F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6EBF6DDA203968F000D4361F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6EBF6DEC203968F000D4361F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6EBF6DF7203968F000D4361F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6EBF6DD4203968F000D4361F = {
+			isa = PBXGroup;
+			children = (
+				6EBF6DDF203968F000D4361F /* GeigerMeterSimulator */,
+				6EBF6DF2203968F000D4361F /* GeigerMeterSimulatorTests */,
+				6EBF6DFD203968F000D4361F /* GeigerMeterSimulatorUITests */,
+				6EBF6DDE203968F000D4361F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6EBF6DDE203968F000D4361F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6EBF6DDD203968F000D4361F /* GeigerMeterSimulator.app */,
+				6EBF6DEF203968F000D4361F /* GeigerMeterSimulatorTests.xctest */,
+				6EBF6DFA203968F000D4361F /* GeigerMeterSimulatorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6EBF6DDF203968F000D4361F /* GeigerMeterSimulator */ = {
+			isa = PBXGroup;
+			children = (
+				6EBF6DE0203968F000D4361F /* AppDelegate.swift */,
+				6EBF6DE2203968F000D4361F /* ViewController.swift */,
+				6EBF6DE4203968F000D4361F /* Assets.xcassets */,
+				6EBF6DE6203968F000D4361F /* Main.storyboard */,
+				6EBF6DE9203968F000D4361F /* Info.plist */,
+				6EBF6DEA203968F000D4361F /* GeigerMeterSimulator.entitlements */,
+			);
+			path = GeigerMeterSimulator;
+			sourceTree = "<group>";
+		};
+		6EBF6DF2203968F000D4361F /* GeigerMeterSimulatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				6EBF6DF3203968F000D4361F /* GeigerMeterSimulatorTests.swift */,
+				6EBF6DF5203968F000D4361F /* Info.plist */,
+			);
+			path = GeigerMeterSimulatorTests;
+			sourceTree = "<group>";
+		};
+		6EBF6DFD203968F000D4361F /* GeigerMeterSimulatorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6EBF6DFE203968F000D4361F /* GeigerMeterSimulatorUITests.swift */,
+				6EBF6E00203968F000D4361F /* Info.plist */,
+			);
+			path = GeigerMeterSimulatorUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6EBF6DDC203968F000D4361F /* GeigerMeterSimulator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6EBF6E03203968F000D4361F /* Build configuration list for PBXNativeTarget "GeigerMeterSimulator" */;
+			buildPhases = (
+				6EBF6DD9203968F000D4361F /* Sources */,
+				6EBF6DDA203968F000D4361F /* Frameworks */,
+				6EBF6DDB203968F000D4361F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GeigerMeterSimulator;
+			productName = GeigerMeterSimulator;
+			productReference = 6EBF6DDD203968F000D4361F /* GeigerMeterSimulator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6EBF6DEE203968F000D4361F /* GeigerMeterSimulatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6EBF6E06203968F000D4361F /* Build configuration list for PBXNativeTarget "GeigerMeterSimulatorTests" */;
+			buildPhases = (
+				6EBF6DEB203968F000D4361F /* Sources */,
+				6EBF6DEC203968F000D4361F /* Frameworks */,
+				6EBF6DED203968F000D4361F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6EBF6DF1203968F000D4361F /* PBXTargetDependency */,
+			);
+			name = GeigerMeterSimulatorTests;
+			productName = GeigerMeterSimulatorTests;
+			productReference = 6EBF6DEF203968F000D4361F /* GeigerMeterSimulatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6EBF6DF9203968F000D4361F /* GeigerMeterSimulatorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6EBF6E09203968F000D4361F /* Build configuration list for PBXNativeTarget "GeigerMeterSimulatorUITests" */;
+			buildPhases = (
+				6EBF6DF6203968F000D4361F /* Sources */,
+				6EBF6DF7203968F000D4361F /* Frameworks */,
+				6EBF6DF8203968F000D4361F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6EBF6DFC203968F000D4361F /* PBXTargetDependency */,
+			);
+			name = GeigerMeterSimulatorUITests;
+			productName = GeigerMeterSimulatorUITests;
+			productReference = 6EBF6DFA203968F000D4361F /* GeigerMeterSimulatorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6EBF6DD5203968F000D4361F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Pablo Caif";
+				TargetAttributes = {
+					6EBF6DDC203968F000D4361F = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					6EBF6DEE203968F000D4361F = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6EBF6DDC203968F000D4361F;
+					};
+					6EBF6DF9203968F000D4361F = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6EBF6DDC203968F000D4361F;
+					};
+				};
+			};
+			buildConfigurationList = 6EBF6DD8203968F000D4361F /* Build configuration list for PBXProject "GeigerMeterSimulator" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6EBF6DD4203968F000D4361F;
+			productRefGroup = 6EBF6DDE203968F000D4361F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6EBF6DDC203968F000D4361F /* GeigerMeterSimulator */,
+				6EBF6DEE203968F000D4361F /* GeigerMeterSimulatorTests */,
+				6EBF6DF9203968F000D4361F /* GeigerMeterSimulatorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6EBF6DDB203968F000D4361F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6EBF6DE5203968F000D4361F /* Assets.xcassets in Resources */,
+				6EBF6DE8203968F000D4361F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6EBF6DED203968F000D4361F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6EBF6DF8203968F000D4361F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6EBF6DD9203968F000D4361F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6EBF6DE3203968F000D4361F /* ViewController.swift in Sources */,
+				6EBF6DE1203968F000D4361F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6EBF6DEB203968F000D4361F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6EBF6DF4203968F000D4361F /* GeigerMeterSimulatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6EBF6DF6203968F000D4361F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6EBF6DFF203968F000D4361F /* GeigerMeterSimulatorUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6EBF6DF1203968F000D4361F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6EBF6DDC203968F000D4361F /* GeigerMeterSimulator */;
+			targetProxy = 6EBF6DF0203968F000D4361F /* PBXContainerItemProxy */;
+		};
+		6EBF6DFC203968F000D4361F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6EBF6DDC203968F000D4361F /* GeigerMeterSimulator */;
+			targetProxy = 6EBF6DFB203968F000D4361F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6EBF6DE6203968F000D4361F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6EBF6DE7203968F000D4361F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6EBF6E01203968F000D4361F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6EBF6E02203968F000D4361F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		6EBF6E04203968F000D4361F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GeigerMeterSimulator/GeigerMeterSimulator.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = X39ANQDJN2;
+				INFOPLIST_FILE = GeigerMeterSimulator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = pablo.GeigerMeterSimulator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		6EBF6E05203968F000D4361F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GeigerMeterSimulator/GeigerMeterSimulator.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = X39ANQDJN2;
+				INFOPLIST_FILE = GeigerMeterSimulator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = pablo.GeigerMeterSimulator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		6EBF6E07203968F000D4361F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = X39ANQDJN2;
+				INFOPLIST_FILE = GeigerMeterSimulatorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = pablo.GeigerMeterSimulatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeigerMeterSimulator.app/Contents/MacOS/GeigerMeterSimulator";
+			};
+			name = Debug;
+		};
+		6EBF6E08203968F000D4361F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = X39ANQDJN2;
+				INFOPLIST_FILE = GeigerMeterSimulatorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = pablo.GeigerMeterSimulatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeigerMeterSimulator.app/Contents/MacOS/GeigerMeterSimulator";
+			};
+			name = Release;
+		};
+		6EBF6E0A203968F000D4361F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = X39ANQDJN2;
+				INFOPLIST_FILE = GeigerMeterSimulatorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = pablo.GeigerMeterSimulatorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = GeigerMeterSimulator;
+			};
+			name = Debug;
+		};
+		6EBF6E0B203968F000D4361F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = X39ANQDJN2;
+				INFOPLIST_FILE = GeigerMeterSimulatorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = pablo.GeigerMeterSimulatorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = GeigerMeterSimulator;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6EBF6DD8203968F000D4361F /* Build configuration list for PBXProject "GeigerMeterSimulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6EBF6E01203968F000D4361F /* Debug */,
+				6EBF6E02203968F000D4361F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6EBF6E03203968F000D4361F /* Build configuration list for PBXNativeTarget "GeigerMeterSimulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6EBF6E04203968F000D4361F /* Debug */,
+				6EBF6E05203968F000D4361F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6EBF6E06203968F000D4361F /* Build configuration list for PBXNativeTarget "GeigerMeterSimulatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6EBF6E07203968F000D4361F /* Debug */,
+				6EBF6E08203968F000D4361F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6EBF6E09203968F000D4361F /* Build configuration list for PBXNativeTarget "GeigerMeterSimulatorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6EBF6E0A203968F000D4361F /* Debug */,
+				6EBF6E0B203968F000D4361F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6EBF6DD5203968F000D4361F /* Project object */;
+}

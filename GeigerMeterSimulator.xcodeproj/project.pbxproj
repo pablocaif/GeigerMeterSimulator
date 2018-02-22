@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E6BA9DE203C44E100EF3744 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E6BA9DC203C44E100EF3744 /* CoreBluetooth.framework */; };
+		6E6BA9DF203C44E100EF3744 /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E6BA9DD203C44E100EF3744 /* IOBluetooth.framework */; };
 		6EBF6DE1203968F000D4361F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF6DE0203968F000D4361F /* AppDelegate.swift */; };
 		6EBF6DE3203968F000D4361F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF6DE2203968F000D4361F /* ViewController.swift */; };
 		6EBF6DE5203968F000D4361F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EBF6DE4203968F000D4361F /* Assets.xcassets */; };
 		6EBF6DE8203968F000D4361F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EBF6DE6203968F000D4361F /* Main.storyboard */; };
 		6EBF6DF4203968F000D4361F /* GeigerMeterSimulatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF6DF3203968F000D4361F /* GeigerMeterSimulatorTests.swift */; };
 		6EBF6DFF203968F000D4361F /* GeigerMeterSimulatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF6DFE203968F000D4361F /* GeigerMeterSimulatorUITests.swift */; };
+		6EBF6E0E203980D700D4361F /* GeigerLEService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF6E0D203980D700D4361F /* GeigerLEService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E6BA9DC203C44E100EF3744 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		6E6BA9DD203C44E100EF3744 /* IOBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetooth.framework; path = System/Library/Frameworks/IOBluetooth.framework; sourceTree = SDKROOT; };
 		6EBF6DDD203968F000D4361F /* GeigerMeterSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeigerMeterSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EBF6DE0203968F000D4361F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6EBF6DE2203968F000D4361F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +51,7 @@
 		6EBF6DFA203968F000D4361F /* GeigerMeterSimulatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeigerMeterSimulatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EBF6DFE203968F000D4361F /* GeigerMeterSimulatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeigerMeterSimulatorUITests.swift; sourceTree = "<group>"; };
 		6EBF6E00203968F000D4361F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6EBF6E0D203980D700D4361F /* GeigerLEService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeigerLEService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E6BA9DE203C44E100EF3744 /* CoreBluetooth.framework in Frameworks */,
+				6E6BA9DF203C44E100EF3744 /* IOBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +81,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E6BA9DB203C44E100EF3744 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6E6BA9DC203C44E100EF3744 /* CoreBluetooth.framework */,
+				6E6BA9DD203C44E100EF3744 /* IOBluetooth.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6EBF6DD4203968F000D4361F = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +97,7 @@
 				6EBF6DF2203968F000D4361F /* GeigerMeterSimulatorTests */,
 				6EBF6DFD203968F000D4361F /* GeigerMeterSimulatorUITests */,
 				6EBF6DDE203968F000D4361F /* Products */,
+				6E6BA9DB203C44E100EF3744 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +114,7 @@
 		6EBF6DDF203968F000D4361F /* GeigerMeterSimulator */ = {
 			isa = PBXGroup;
 			children = (
+				6EBF6E0C2039808000D4361F /* Bluetooth */,
 				6EBF6DE0203968F000D4361F /* AppDelegate.swift */,
 				6EBF6DE2203968F000D4361F /* ViewController.swift */,
 				6EBF6DE4203968F000D4361F /* Assets.xcassets */,
@@ -122,6 +141,14 @@
 				6EBF6E00203968F000D4361F /* Info.plist */,
 			);
 			path = GeigerMeterSimulatorUITests;
+			sourceTree = "<group>";
+		};
+		6EBF6E0C2039808000D4361F /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				6EBF6E0D203980D700D4361F /* GeigerLEService.swift */,
+			);
+			path = Bluetooth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +220,11 @@
 					6EBF6DDC203968F000D4361F = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					6EBF6DEE203968F000D4361F = {
 						CreatedOnToolsVersion = 9.2;
@@ -259,6 +291,7 @@
 			files = (
 				6EBF6DE3203968F000D4361F /* ViewController.swift in Sources */,
 				6EBF6DE1203968F000D4361F /* AppDelegate.swift in Sources */,
+				6EBF6E0E203980D700D4361F /* GeigerLEService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,7 +448,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = GeigerMeterSimulator/GeigerMeterSimulator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = X39ANQDJN2;
@@ -431,7 +463,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = GeigerMeterSimulator/GeigerMeterSimulator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = X39ANQDJN2;

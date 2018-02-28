@@ -117,7 +117,7 @@ public class GeigerLEService: NSObject {
     
     private func startTransmitingReadings() {
         timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: updateReadValue)
+        timer = Timer.scheduledTimer(withTimeInterval: 0.4 , repeats: true, block: updateReadValue)
         RunLoop.current.add(timer!, forMode: .commonModes)
     }
 }

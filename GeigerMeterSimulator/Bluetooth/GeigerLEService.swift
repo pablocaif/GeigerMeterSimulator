@@ -12,11 +12,19 @@ import CoreBluetooth
 public class GeigerLEService: NSObject {
     
     private var peripheralManager: CBPeripheralManager?
-    private var geigerMeterService :CBMutableService?
-    private var radiationSensorChar :CBMutableCharacteristic?
-    private let peripheralUUID = "190124D9-BB53-4ACB-9C48-F4D5F8C81668"
-    private let serviceScanParametersID = "1813"
-    private let analogCharID = "2A58"
+    private var geigerMeterService: CBMutableService?
+    private var radiationSensorChar: CBMutableCharacteristic?
+    private let serviceGeigerCounterID = "9822918C-312C-48FA-AD7C-A5E9853C5AC5"
+    private let radiationCountCharID = "190124D9-BB53-4ACB-9C48-F4D5F8C81668"
+
+    private let geigerBatteryServiceID = "FA0EA16D-49D5-438C-99A7-CF61ACA41F36"
+    private var batteryService: CBMutableService?
+    private let geigerBatteryLevelCharID = "FA0EA16D-49D5-438C-99A7-CF61ACA41F36"
+    private var batteryLevelChar: CBMutableCharacteristic?
+
+    private let geigerCommandCharID = "F35065D4-DE1D-4A50-B7D0-4AE378B7E51D"
+    private var geigerCommandChar: CBMutableCharacteristic?
+
     private var timer :Timer?
     
     public func startAdvertisingPeripheral() {
@@ -27,28 +35,55 @@ public class GeigerLEService: NSObject {
         if peripheralManager?.state == .poweredOn {
             peripheralManager?.removeAllServices()
             setupServicesAndCharac()
-            peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey: [CBUUID(string: serviceScanParametersID)]])
+            peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey: [CBUUID(string: serviceGeigerCounterID)]])
         }
     }
     
     public func stopAdvertising() {
         timer?.invalidate()
         peripheralManager?.stopAdvertising()
+        peripheralManager?.removeAllServices()
         geigerMeterService = nil
         radiationSensorChar = nil
         peripheralManager = nil
     }
     
     private func setupServicesAndCharac() {
-        radiationSensorChar = CBMutableCharacteristic(type: CBUUID(string: analogCharID), properties: .notify, value: nil, permissions: .readable)
-        geigerMeterService = CBMutableService(type: CBUUID(string: serviceScanParametersID), primary: true)
-        let descriptor = CBMutableDescriptor(type: CBUUID(string:CBUUIDCharacteristicFormatString), value: CBUUIDCharacteristicFormatString.data(using: .utf8))
+        createBatteryService()
+        createGeigerCounterService()
+    }
+
+    private func createGeigerCounterService() {
+        radiationSensorChar = CBMutableCharacteristic(type: CBUUID(string: radiationCountCharID), properties: .notify, value: nil, permissions: .readable)
+        geigerMeterService = CBMutableService(type: CBUUID(string: serviceGeigerCounterID), primary: true)
+        let descriptor = CBMutableDescriptor(type: CBUUID(string:CBUUIDCharacteristicUserDescriptionString), value: "Geiger counter")
         radiationSensorChar?.descriptors = [descriptor]
-        geigerMeterService?.characteristics = [radiationSensorChar!]
+
+        geigerCommandChar = CBMutableCharacteristic(type: CBUUID(string: geigerCommandCharID), properties: .write, value: nil, permissions: .writeEncryptionRequired)
+        let commandDescriptor = CBMutableDescriptor(type: CBUUID(string:CBUUIDCharacteristicUserDescriptionString), value: "Commands")
+        geigerCommandChar?.descriptors = [commandDescriptor]
+
+        geigerMeterService?.characteristics = [radiationSensorChar!, geigerCommandChar!]
         peripheralManager?.add(geigerMeterService!)
+    }
+
+    private func createBatteryService() {
+        var initialBatteryLevel = UInt8(100)
+        batteryLevelChar = CBMutableCharacteristic(type: CBUUID(string: geigerBatteryLevelCharID), properties: .read, value: Data(bytes: &initialBatteryLevel, count: MemoryLayout<UInt8>.size), permissions: .readable)
+       let batteryDescriptor = CBMutableDescriptor(type: CBUUID(string:CBUUIDCharacteristicUserDescriptionString), value: "Battery level")
+        batteryLevelChar?.descriptors = [batteryDescriptor]
+        batteryService = CBMutableService(type: CBUUID(string: geigerBatteryServiceID), primary: true)
+        batteryService?.characteristics = [batteryLevelChar!]
+        peripheralManager?.add(batteryService!)
     }
     
     private func updateReadValue(timer: Timer) {
+        guard
+            let radiationSensorChar = radiationSensorChar,
+            let peripheralManager = peripheralManager
+        else {
+            return
+        }
         let radiationReading = Float32(arc4random() % 100)
         
         let bufferLength = MemoryLayout<Float32>.size
@@ -60,8 +95,8 @@ public class GeigerLEService: NSObject {
         }
         let dataToSend = Data(bytes: buffer, count: bufferLength)
         
-        let sent = peripheralManager?.updateValue(dataToSend, for: radiationSensorChar!, onSubscribedCentrals: nil)
-        if !sent! {
+        let sent = peripheralManager.updateValue(dataToSend, for: radiationSensorChar, onSubscribedCentrals: nil)
+        if !sent {
             print("Cound not send value\n")
         }
     }
@@ -86,8 +121,10 @@ extension GeigerLEService: CBPeripheralManagerDelegate {
             startAdvertisingPeripheral()
         case .poweredOff:
             print("Peripheral manager switched off\n")
+            stopAdvertising()
         case .resetting:
             print("Peripheral manager reseting\n")
+            stopAdvertising()
         case .unauthorized:
             print("Peripheral manager unauthorised\n")
         case .unknown:

@@ -18,8 +18,13 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         geigerService.delegate = self
+        
     }
 
+    override func viewDidAppear() {
+        view.window?.title = "Geiger Simulator"
+    }
+    
     override func viewWillDisappear() {
         geigerService.stopAdvertising()
     }

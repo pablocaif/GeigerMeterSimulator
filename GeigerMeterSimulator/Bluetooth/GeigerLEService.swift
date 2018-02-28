@@ -42,8 +42,9 @@ public class GeigerLEService: NSObject {
             peripheralManager?.removeAllServices()
             setupServicesAndCharac()
             peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey: [CBUUID(string: serviceGeigerCounterID)]])
+            delegate?.serviceNotifiy(message: "Service started")
         }
-        delegate?.serviceNotifiy(message: "Service started")
+        
     }
     
     public func stopAdvertising() {
@@ -53,6 +54,7 @@ public class GeigerLEService: NSObject {
         geigerMeterService = nil
         radiationSensorChar = nil
         peripheralManager = nil
+        delegate?.serviceNotifiy(message: "Service stopped")
     }
     
     private func setupServicesAndCharac() {
@@ -75,8 +77,7 @@ public class GeigerLEService: NSObject {
     }
 
     private func createBatteryService() {
-        var initialBatteryLevel = UInt8(100)
-        batteryLevelChar = CBMutableCharacteristic(type: CBUUID(string: geigerBatteryLevelCharID), properties: .read, value: Data(bytes: &initialBatteryLevel, count: MemoryLayout<UInt8>.size), permissions: .readable)
+        batteryLevelChar = CBMutableCharacteristic(type: CBUUID(string: geigerBatteryLevelCharID), properties: .read, value: nil, permissions: .readable)
        let batteryDescriptor = CBMutableDescriptor(type: CBUUID(string:CBUUIDCharacteristicUserDescriptionString), value: "Battery level")
         batteryLevelChar?.descriptors = [batteryDescriptor]
         batteryService = CBMutableService(type: CBUUID(string: geigerBatteryServiceID), primary: true)
@@ -91,16 +92,9 @@ public class GeigerLEService: NSObject {
         else {
             return
         }
-        let radiationReading = Float32(arc4random() % 100)
+        var radiationReading = Float32(arc4random() % 100)
         
-        let bufferLength = MemoryLayout<Float32>.size
-        let buffer = UnsafeMutableRawPointer.allocate(bytes: bufferLength, alignedTo: MemoryLayout<Float32>.alignment)
-        _ = buffer.initializeMemory(as: Float32.self, count: 1, to: radiationReading)
-        
-        defer {
-            buffer.deallocate(bytes: bufferLength, alignedTo: MemoryLayout<Float32>.alignment)
-        }
-        let dataToSend = Data(bytes: buffer, count: bufferLength)
+        let dataToSend = Data(bytes: &radiationReading, count: MemoryLayout<Float32>.size)
         
         let sent = peripheralManager.updateValue(dataToSend, for: radiationSensorChar, onSubscribedCentrals: nil)
         if !sent {

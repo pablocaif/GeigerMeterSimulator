@@ -9,6 +9,10 @@
 import Foundation
 import CoreBluetooth
 
+public protocol GeigerLEServiceDelegate: class {
+    func serviceNotifiy(message: String)
+}
+
 public class GeigerLEService: NSObject {
     
     private var peripheralManager: CBPeripheralManager?
@@ -149,7 +153,39 @@ extension GeigerLEService: CBPeripheralManagerDelegate {
             stopTransmiting()
         }
     }
-    
+
+    public func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
+        if request.characteristic.uuid == batteryLevelChar?.uuid {
+            var batteryLevel: UInt8 = UInt8(arc4random() % 100)
+            batteryLevelChar?.value = Data(bytes: &batteryLevel, count: MemoryLayout<UInt8>.size)
+            request.value = batteryLevelChar?.value
+            peripheralManager?.respond(to: request, withResult: .success)
+        }
+    }
+
+    public func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
+        requests.forEach { request in
+            if request.characteristic.uuid == geigerCommandChar?.uuid {
+                var command = UInt8(0)
+                guard let data = request.value else {return}
+                data.copyBytes(to: &command, count: MemoryLayout<UInt8>.size)
+                switch command {
+                case GeigerCommand.satndBy.rawValue:
+                    stopTransmiting()
+                    break
+                case GeigerCommand.on.rawValue:
+                    startTransmitingReadings()
+                    break
+                default:
+                    peripheralManager?.respond(to: request, withResult: .requestNotSupported)
+                    return
+                }
+                geigerCommandChar?.value = Data(bytes: &command, count: MemoryLayout<UInt8>.size)
+                peripheralManager?.respond(to: request, withResult: .success)
+            }
+        }
+    }
+
     public func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?) {
         print("Did start advertising")
         if let errorAdvertising = error {
@@ -157,4 +193,9 @@ extension GeigerLEService: CBPeripheralManagerDelegate {
         }
     }
     
+}
+
+enum GeigerCommand: UInt8 {
+    case satndBy = 0
+    case on
 }

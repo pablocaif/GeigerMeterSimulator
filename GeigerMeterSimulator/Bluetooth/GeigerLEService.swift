@@ -28,6 +28,8 @@ public class GeigerLEService: NSObject {
 
     private let geigerCommandCharID = "F35065D4-DE1D-4A50-B7D0-4AE378B7E51D"
     private var geigerCommandChar: CBMutableCharacteristic?
+    
+    public weak var delegate: GeigerLEServiceDelegate?
 
     private var timer :Timer?
     
@@ -41,6 +43,7 @@ public class GeigerLEService: NSObject {
             setupServicesAndCharac()
             peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey: [CBUUID(string: serviceGeigerCounterID)]])
         }
+        delegate?.serviceNotifiy(message: "Service started")
     }
     
     public func stopAdvertising() {
@@ -143,12 +146,16 @@ extension GeigerLEService: CBPeripheralManagerDelegate {
             peripheralManager?.setDesiredConnectionLatency(.low, for: central)
             
             startTransmitingReadings()
-            print("Central \(central.identifier.uuidString) subscribed\n")
+            let message = "Central \(central.identifier.uuidString) subscribed\n"
+            print(message)
+            delegate?.serviceNotifiy(message: message)
         }
     }
     
     public func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didUnsubscribeFrom characteristic: CBCharacteristic) {
-        print("Central \(central.identifier.uuidString) cancelled subscription")
+        let message = "Central \(central.identifier.uuidString) cancelled subscription"
+        print(message)
+        delegate?.serviceNotifiy(message: message)
         if characteristic.uuid == radiationSensorChar?.uuid {
             stopTransmiting()
         }
@@ -160,6 +167,7 @@ extension GeigerLEService: CBPeripheralManagerDelegate {
             batteryLevelChar?.value = Data(bytes: &batteryLevel, count: MemoryLayout<UInt8>.size)
             request.value = batteryLevelChar?.value
             peripheralManager?.respond(to: request, withResult: .success)
+            delegate?.serviceNotifiy(message: "New battery level=\(batteryLevel)%")
         }
     }
 
@@ -172,9 +180,11 @@ extension GeigerLEService: CBPeripheralManagerDelegate {
                 switch command {
                 case GeigerCommand.satndBy.rawValue:
                     stopTransmiting()
+                    delegate?.serviceNotifiy(message: "Received command to standby")
                     break
                 case GeigerCommand.on.rawValue:
                     startTransmitingReadings()
+                    delegate?.serviceNotifiy(message: "Received command to turn on")
                     break
                 default:
                     peripheralManager?.respond(to: request, withResult: .requestNotSupported)

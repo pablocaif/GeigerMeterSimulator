@@ -17,6 +17,7 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        geigerService.delegate = self
     }
 
     override func viewWillDisappear() {
@@ -39,3 +40,11 @@ class ViewController: NSViewController {
     }
 }
 
+// MARK: GeigerLEServiceDelegate
+extension ViewController: GeigerLEServiceDelegate {
+    func serviceNotifiy(message: String) {
+        textViewInfo.textStorage!.append(NSAttributedString(string: message + "\n"))
+    }
+    
+    
+}

@@ -69,7 +69,7 @@ public class GeigerLEService: NSObject {
         let typeDescriptor = CBMutableDescriptor(type: CBUUID(string:CBUUIDCharacteristicFormatString), value: CBUUIDCharacteristicFormatString.data(using: .utf8))
         radiationSensorChar?.descriptors = [nameDescriptor, typeDescriptor]
         
-        geigerCommandChar = CBMutableCharacteristic(type: CBUUID(string: geigerCommandCharID), properties: .write, value: nil, permissions: .writeEncryptionRequired)
+        geigerCommandChar = CBMutableCharacteristic(type: CBUUID(string: geigerCommandCharID), properties: .write, value: nil, permissions: .writeable)
         let commandDescriptor = CBMutableDescriptor(type: CBUUID(string:CBUUIDCharacteristicUserDescriptionString), value: "Commands")
         geigerCommandChar?.descriptors = [commandDescriptor]
         
@@ -181,7 +181,7 @@ extension GeigerLEService: CBPeripheralManagerDelegate {
                 guard let data = request.value else {return}
                 data.copyBytes(to: &command, count: MemoryLayout<UInt8>.size)
                 switch command {
-                case GeigerCommand.satndBy.rawValue:
+                case GeigerCommand.standBy.rawValue:
                     stopTransmiting()
                     delegate?.serviceNotifiy(message: "Received command to standby")
                 case GeigerCommand.on.rawValue:
@@ -207,6 +207,6 @@ extension GeigerLEService: CBPeripheralManagerDelegate {
 }
 
 enum GeigerCommand: UInt8 {
-    case satndBy = 0
+    case standBy = 0
     case on
 }

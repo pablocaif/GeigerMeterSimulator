@@ -49,7 +49,7 @@ class ViewController: NSViewController {
 extension ViewController: GeigerLEServiceDelegate {
     func serviceNotifiy(message: String) {
         textViewInfo.textStorage!.append(NSAttributedString(string: message + "\n"))
+        textViewInfo.scrollToEndOfDocument(self)
     }
-    
     
 }

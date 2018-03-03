@@ -149,7 +149,7 @@ extension GeigerLEService: CBPeripheralManagerDelegate {
             peripheralManager?.setDesiredConnectionLatency(.low, for: central)
             
             startTransmitingReadings()
-            let message = "Central \(central.identifier.uuidString) subscribed\n"
+            let message = "Central \(central.identifier.uuidString) subscribed"
             print(message)
             delegate?.serviceNotifiy(message: message)
         }

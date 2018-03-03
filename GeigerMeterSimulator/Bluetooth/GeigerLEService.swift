@@ -10,7 +10,7 @@ import Foundation
 import CoreBluetooth
 
 public protocol GeigerLEServiceDelegate: class {
-    func serviceNotifiy(message: String)
+    func serviceNotify(message: String)
 }
 
 public class GeigerLEService: NSObject {
@@ -32,7 +32,10 @@ public class GeigerLEService: NSObject {
     public weak var delegate: GeigerLEServiceDelegate?
     
     private var timer :Timer?
-    
+
+
+    ///Calling this function will attempt to start advertising the services
+    ///as well as create the services and characteristics
     public func startAdvertisingPeripheral() {
         if peripheralManager == nil {
             peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
@@ -41,12 +44,13 @@ public class GeigerLEService: NSObject {
         if peripheralManager?.state == .poweredOn {
             peripheralManager?.removeAllServices()
             setupServicesAndCharac()
-            peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey: [CBUUID(string: serviceGeigerCounterID)]])
-            delegate?.serviceNotifiy(message: "Service started")
+            peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey: [CBUUID(string: serviceGeigerCounterID), CBUUID(string: geigerBatteryServiceID)]])
+            delegate?.serviceNotify(message: "Service started")
         }
         
     }
-    
+
+    ///Calling this function will stop advertising the services
     public func stopAdvertising() {
         timer?.invalidate()
         peripheralManager?.stopAdvertising()
@@ -54,7 +58,7 @@ public class GeigerLEService: NSObject {
         geigerMeterService = nil
         radiationSensorChar = nil
         peripheralManager = nil
-        delegate?.serviceNotifiy(message: "Service stopped")
+        delegate?.serviceNotify(message: "Service stopped")
     }
     
     private func setupServicesAndCharac() {
@@ -63,6 +67,7 @@ public class GeigerLEService: NSObject {
     }
     
     private func createGeigerCounterService() {
+        //Services and characteristics need to be created prior to publishing the services
         radiationSensorChar = CBMutableCharacteristic(type: CBUUID(string: radiationCountCharID), properties: .notify, value: nil, permissions: .readable)
         geigerMeterService = CBMutableService(type: CBUUID(string: serviceGeigerCounterID), primary: true)
         let nameDescriptor = CBMutableDescriptor(type: CBUUID(string:CBUUIDCharacteristicUserDescriptionString), value: "Geiger counter")
@@ -85,14 +90,15 @@ public class GeigerLEService: NSObject {
         batteryService?.characteristics = [batteryLevelChar!]
         peripheralManager?.add(batteryService!)
     }
-    
+
+    ///This function gets called by the timer and it will generate random geiger readings
     private func updateReadValue(timer: Timer) {
         guard
             let radiationSensorChar = radiationSensorChar,
             let peripheralManager = peripheralManager
             else {
                 return
-        }
+            }
         let radiationReading = Float32(arc4random() % 100)
         
         let bufferLength = MemoryLayout<Float32>.size
@@ -106,16 +112,16 @@ public class GeigerLEService: NSObject {
         
         let sent = peripheralManager.updateValue(dataToSend, for: radiationSensorChar, onSubscribedCentrals: nil)
         if !sent {
-            print("Cound not send value\n")
+            print("Could not send value\n")
         }
     }
     
-    private func stopTransmiting() {
+    private func stopTransmitting() {
         timer?.invalidate()
         timer = nil
     }
     
-    private func startTransmitingReadings() {
+    private func startTransmittingReadings() {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.4 , repeats: true, block: updateReadValue)
         RunLoop.current.add(timer!, forMode: .commonModes)
@@ -146,47 +152,50 @@ extension GeigerLEService: CBPeripheralManagerDelegate {
     
     public func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didSubscribeTo characteristic: CBCharacteristic) {
         if characteristic.uuid == radiationSensorChar?.uuid {
+            //We negotiate low latency with the central. The central will respond with its lowest connection time
             peripheralManager?.setDesiredConnectionLatency(.low, for: central)
             
-            startTransmitingReadings()
+            startTransmittingReadings()
             let message = "Central \(central.identifier.uuidString) subscribed"
             print(message)
-            delegate?.serviceNotifiy(message: message)
+            delegate?.serviceNotify(message: message)
         }
     }
     
     public func peripheralManager(_ peripheral: CBPeripheralManager, central: CBCentral, didUnsubscribeFrom characteristic: CBCharacteristic) {
         let message = "Central \(central.identifier.uuidString) cancelled subscription"
         print(message)
-        delegate?.serviceNotifiy(message: message)
+        delegate?.serviceNotify(message: message)
         if characteristic.uuid == radiationSensorChar?.uuid {
-            stopTransmiting()
+            stopTransmitting()
         }
     }
     
     public func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
+        //If the request is to read the battery level we generate a random battery level and return
         if request.characteristic.uuid == batteryLevelChar?.uuid {
             var batteryLevel: UInt8 = UInt8(arc4random() % 100)
             batteryLevelChar?.value = Data(bytes: &batteryLevel, count: MemoryLayout<UInt8>.size)
             request.value = batteryLevelChar?.value
             peripheralManager?.respond(to: request, withResult: .success)
-            delegate?.serviceNotifiy(message: "New battery level=\(batteryLevel)%")
+            delegate?.serviceNotify(message: "New battery level=\(batteryLevel)%")
         }
     }
     
     public func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
         requests.forEach { request in
+            //If the request is to write to the command characteristic we execute the command
             if request.characteristic.uuid == geigerCommandChar?.uuid {
                 var command = UInt8(0)
                 guard let data = request.value else {return}
                 data.copyBytes(to: &command, count: MemoryLayout<UInt8>.size)
                 switch command {
                 case GeigerCommand.standBy.rawValue:
-                    stopTransmiting()
-                    delegate?.serviceNotifiy(message: "Received command to standby")
+                    stopTransmitting()
+                    delegate?.serviceNotify(message: "Received command to standby")
                 case GeigerCommand.on.rawValue:
-                    startTransmitingReadings()
-                    delegate?.serviceNotifiy(message: "Received command to turn on")
+                    startTransmittingReadings()
+                    delegate?.serviceNotify(message: "Received command to turn on")
                 default:
                     peripheralManager?.respond(to: request, withResult: .requestNotSupported)
                     return
@@ -203,7 +212,6 @@ extension GeigerLEService: CBPeripheralManagerDelegate {
             print("Error advertising \(errorAdvertising.localizedDescription)")
         }
     }
-    
 }
 
 enum GeigerCommand: UInt8 {

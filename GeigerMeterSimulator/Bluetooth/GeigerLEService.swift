@@ -212,6 +212,14 @@ extension GeigerLEService: CBPeripheralManagerDelegate {
             print("Error advertising \(errorAdvertising.localizedDescription)")
         }
     }
+    
+    public func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
+        if error != nil {
+            print("Error adding service=\(service.uuid) error=\(error!.localizedDescription)")
+        } else {
+            print("Service \(service.uuid) added")
+        }
+    }
 }
 
 enum GeigerCommand: UInt8 {
